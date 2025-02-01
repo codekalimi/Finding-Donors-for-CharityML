@@ -3,13 +3,13 @@
 
 Welcome to the first project of the Data Scientist Nanodegree! In this notebook, some template code has already been provided for you, and it will be your job to implement the additional functionality necessary to successfully complete this project. Sections that begin with **'Implementation'** in the header indicate that the following block of code will require additional functionality which you must provide. Instructions will be provided for each section and the specifics of the implementation are marked in the code block with a `TODO` statement. Please be sure to read the instructions carefully!
 
-In addition to implementing code, there will be questions that you must answer which relate to the project and your implementation. Each section where you will answer a question is preceded by a **'Question X'** header. Carefully read each question and provide thorough answers in the following text boxes that begin with **'Answer:'**. Your project submission will be evaluated based on your answers to each of the questions and the implementation you provide.
+In addition to implementing code, there will be questions that you must answer which relate to the project and your implementation. Each section where you will answer a question is preceded by a **'Question X'** header. Carefully read each question and provide thorough answers in the following text boxes that begin with **'Answer:'**. Your project submission will be evaluated based on your answers to each of the questions and the implementation you provide.  
 
 >**Note:** Please specify **WHICH VERSION OF PYTHON** you are using when submitting this notebook. Code and Markdown cells can be executed using the **Shift + Enter** keyboard shortcut. In addition, Markdown cells can be edited by typically double-clicking the cell to enter edit mode.
 
 ## Getting Started
 
-In this project, you will employ several supervised algorithms of your choice to accurately model individuals' income using data collected from the 1994 U.S. Census. You will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Your goal with this implementation is to construct a model that accurately predicts whether an individual makes more than `$50,000`. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features.
+In this project, you will employ several supervised algorithms of your choice to accurately model individuals' income using data collected from the 1994 U.S. Census. You will then choose the best candidate algorithm from preliminary results and further optimize this algorithm to best model the data. Your goal with this implementation is to construct a model that accurately predicts whether an individual makes more than `$50,000`. This sort of task can arise in a non-profit setting, where organizations survive on donations.  Understanding an individual's income can help a non-profit better understand how large of a donation to request, or whether or not they should reach out to begin with.  While it can be difficult to determine an individual's general income bracket directly from public sources, we can (as we will see) infer this value from other publically available features. 
 
 The dataset for this project originates from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Census+Income). The datset was donated by Ron Kohavi and Barry Becker, after being published in the article _"Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid"_. You can find the article by Ron Kohavi [online](https://www.aaai.org/Papers/KDD/1996/KDD96-033.pdf). The data we investigate here consists of small changes to the original dataset, such as removing the `fnlwgt` feature and records with missing or ill-formatted entries.
 
@@ -254,18 +254,18 @@ print("Percentage of individuals making more than `$50,000`: {}%".format(greater
 
 **Featureset Exploration**
 
-* **age**: continuous.
-* **workclass**: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
-* **education**: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
-* **education-num**: continuous.
-* **marital-status**: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
-* **occupation**: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
-* **relationship**: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried.
-* **race**: Black, White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other.
-* **sex**: Female, Male.
-* **capital-gain**: continuous.
-* **capital-loss**: continuous.
-* **hours-per-week**: continuous.
+* **age**: continuous. 
+* **workclass**: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked. 
+* **education**: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool. 
+* **education-num**: continuous. 
+* **marital-status**: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse. 
+* **occupation**: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces. 
+* **relationship**: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried. 
+* **race**: Black, White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other. 
+* **sex**: Female, Male. 
+* **capital-gain**: continuous. 
+* **capital-loss**: continuous. 
+* **hours-per-week**: continuous. 
 * **native-country**: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
 
 ----
@@ -273,7 +273,7 @@ print("Percentage of individuals making more than `$50,000`: {}%".format(greater
 Before data can be used as input for machine learning algorithms, it often must be cleaned, formatted, and restructured — this is typically known as **preprocessing**. Fortunately, for this dataset, there are no invalid or missing entries we must deal with, however, there are some qualities about certain features that must be adjusted. This preprocessing can help tremendously with the outcome and predictive power of nearly all learning algorithms.
 
 ### Transforming Skewed Continuous Features
-A dataset may sometimes contain at least one feature whose values tend to lie near a single number, but will also have a non-trivial number of vastly larger or smaller values than that single number.  Algorithms can be sensitive to such distributions of values and can underperform if the range is not properly normalized. With the census dataset two features fit this description: `capital-gain` and `capital-loss`.
+A dataset may sometimes contain at least one feature whose values tend to lie near a single number, but will also have a non-trivial number of vastly larger or smaller values than that single number.  Algorithms can be sensitive to such distributions of values and can underperform if the range is not properly normalized. With the census dataset two features fit this description: `capital-gain` and `capital-loss`. 
 
 Run the code cell below to plot a histogram of these two features. Note the range of the values present and how they are distributed.
 
@@ -292,14 +292,14 @@ vs.distribution(data)
 
 
 
-
+    
 ![png](finding_donors_files/finding_donors_13_1.png)
-
+    
 
 
 For highly-skewed feature distributions such as `capital-gain` and `capital-loss`, it is common practice to apply a [logarithmic transformation](https://en.wikipedia.org/wiki/Data_transformation_(statistics)) on the data so that the very large and very small values do not negatively affect the performance of a learning algorithm. Using a logarithmic transformation significantly reduces the range of values caused by outliers. Care must be taken when applying this transformation however: The logarithm of 0 is undefined, so we must translate the values by a small amount above 0 to apply the the logarithm successfully.
 
-Run the code cell below to perform a transformation on the data and visualize the results. Again, note the range of values and how they are distributed.
+Run the code cell below to perform a transformation on the data and visualize the results. Again, note the range of values and how they are distributed. 
 
 
 ```python
@@ -317,9 +317,9 @@ vs.distribution(features_log_transformed, transformed = True)
 
 
 
-
+    
 ![png](finding_donors_files/finding_donors_15_1.png)
-
+    
 
 
 ### Normalizing Numerical Features
@@ -482,9 +482,9 @@ We then encode this feature into `someFeature_A`, `someFeature_B` and `someFeatu
 |2| 1 | 0 | 0 |
 
 Additionally, as with the non-numeric features, we need to convert the non-numeric target label, `income` to numerical values for the learning algorithm to work. Since there are only two possible categories for this label ("<=50K" and ">50K"), we can avoid using one-hot encoding and simply encode these two categories as 0 and 1, respectively. In code cell below, you will need to implement the following:
-- Use [`pandas.get_dummies()`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html?highlight=get_dummies#pandas.get_dummies) to perform one-hot encoding on the `features_log_minmax_transform` data.
-- Convert the target label `income_raw` to numerical entries.
-    - Set records with "<=50K" to 0 and records with ">50K" to 1.
+ - Use [`pandas.get_dummies()`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.get_dummies.html?highlight=get_dummies#pandas.get_dummies) to perform one-hot encoding on the `features_log_minmax_transform` data.
+ - Convert the target label `income_raw` to numerical entries.
+   - Set records with "<=50K" to 0 and records with ">50K" to 1.
 
 
 ```python
@@ -542,7 +542,7 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{\text{precision} \cdot \text{recall}}{\
 
 In particular, when $\beta = 0.5$, more emphasis is placed on precision. This is called the $F_{0.5}$ score (or F-score for simplicity).
 
-Looking at the distribution of classes (those who make at most `$50,000`, and those who make more), it's clear most individuals do not make more than `$50,000`. This can greatly affect **accuracy**, since we could simply say *"this person does not make more than `$50,000`"* and generally be right, without ever looking at the data! Making such a statement would be called **naive**, since we have not considered any information to substantiate the claim. It is always important to consider the *naive prediction* for your data, to help establish a benchmark for whether a model is performing well. That been said, using that prediction would be pointless: If we predicted all people made less than `$50,000`, *CharityML* would identify no one as donors.
+Looking at the distribution of classes (those who make at most `$50,000`, and those who make more), it's clear most individuals do not make more than `$50,000`. This can greatly affect **accuracy**, since we could simply say *"this person does not make more than `$50,000`"* and generally be right, without ever looking at the data! Making such a statement would be called **naive**, since we have not considered any information to substantiate the claim. It is always important to consider the *naive prediction* for your data, to help establish a benchmark for whether a model is performing well. That been said, using that prediction would be pointless: If we predicted all people made less than `$50,000`, *CharityML* would identify no one as donors. 
 
 
 #### Note: Recap of accuracy, precision, recall
@@ -566,9 +566,9 @@ For classification problems that are skewed in their classification distribution
 
 **Please note** that the the purpose of generating a naive predictor is simply to show what a base model without any intelligence would look like. In the real world, ideally your base model would be either the results of a previous model or could be based on a research paper upon which you are looking to improve. When there is no benchmark model set, getting a result better than random choice is a place you could start from.
 
-**HINT:**
+**HINT:** 
 
-* When we have a model that always predicts 1 (i.e., the individual makes more than 50k) then our model will have no True Negatives (TN) or False Negatives (FN) as we are not making any negative (0 value) predictions. Therefore our Accuracy in this case becomes the same as our Precision (True Positives / (True Positives + False Positives)) as every prediction that we have made with value 1 that should have 0 becomes a False Positive; therefore our denominator in this case is the total number of records we have in total.
+* When we have a model that always predicts 1 (i.e., the individual makes more than 50k) then our model will have no True Negatives (TN) or False Negatives (FN) as we are not making any negative (0 value) predictions. Therefore our Accuracy in this case becomes the same as our Precision (True Positives / (True Positives + False Positives)) as every prediction that we have made with value 1 that should have 0 becomes a False Positive; therefore our denominator in this case is the total number of records we have in total. 
 * Our Recall score (True Positives / (True Positives + False Negatives)) in this setting becomes 1 as we have no False Negatives.
 
 
@@ -619,7 +619,7 @@ from sklearn.model_selection import GridSearchCV
 ### Question 2 - Model Application
 List three of the supervised learning models above that are appropriate for this problem that you will test on the census data. For each model chosen
 
-- Describe one real-world application in industry where the model can be applied.
+- Describe one real-world application in industry where the model can be applied. 
 - What are the strengths of the model; when does it perform well?
 - What are the weaknesses of the model; when does it perform poorly?
 - What makes this model a good candidate for the problem, given what you know about the data?
@@ -690,13 +690,13 @@ Here are three supervised learning models that are appropriate for this problem:
 ### Implementation - Creating a Training and Predicting Pipeline
 To properly evaluate the performance of each model you've chosen, it's important that you create a training and predicting pipeline that allows you to quickly and effectively train models using various sizes of training data and perform predictions on the testing data. Your implementation here will be used in the following section.
 In the code block below, you will need to implement the following:
-- Import `fbeta_score` and `accuracy_score` from [`sklearn.metrics`](http://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics).
-- Fit the learner to the sampled training data and record the training time.
-- Perform predictions on the test data `X_test`, and also on the first 300 training points `X_train[:300]`.
-    - Record the total prediction time.
-- Calculate the accuracy score for both the training subset and testing set.
-- Calculate the F-score for both the training subset and testing set.
-    - Make sure that you set the `beta` parameter!
+ - Import `fbeta_score` and `accuracy_score` from [`sklearn.metrics`](http://scikit-learn.org/stable/modules/classes.html#sklearn-metrics-metrics).
+ - Fit the learner to the sampled training data and record the training time.
+ - Perform predictions on the test data `X_test`, and also on the first 300 training points `X_train[:300]`.
+   - Record the total prediction time.
+ - Calculate the accuracy score for both the training subset and testing set.
+ - Calculate the F-score for both the training subset and testing set.
+   - Make sure that you set the `beta` parameter!
 
 
 ```python
@@ -756,10 +756,10 @@ def train_predict(learner, sample_size, X_train, y_train, X_test, y_test):
 In the code cell, you will need to implement the following:
 - Import the three supervised learning models you've discussed in the previous section.
 - Initialize the three models and store them in `clf_A`, `clf_B`, and `clf_C`.
-    - Use a `random_state` for each model you use, if provided.
-    - **Note:** Use the default settings for each model — you will tune one specific model in a later section.
+  - Use a `random_state` for each model you use, if provided.
+  - **Note:** Use the default settings for each model — you will tune one specific model in a later section.
 - Calculate the number of records equal to 1%, 10%, and 100% of the training data.
-    - Store those values in `samples_1`, `samples_10`, and `samples_100` respectively.
+  - Store those values in `samples_1`, `samples_10`, and `samples_100` respectively.
 
 **Note:** Depending on which algorithms you chose, the following implementation may take some time to run!
 
@@ -811,22 +811,22 @@ vs.evaluate(results, accuracy, fscore)
 
 
 
-
+    
 ![png](finding_donors_files/finding_donors_34_2.png)
-
+    
 
 
 ----
 ## Improving Results
-In this final section, you will choose from the three supervised learning models the *best* model to use on the student data. You will then perform a grid search optimization for the model over the entire training set (`X_train` and `y_train`) by tuning at least one parameter to improve upon the untuned model's F-score.
+In this final section, you will choose from the three supervised learning models the *best* model to use on the student data. You will then perform a grid search optimization for the model over the entire training set (`X_train` and `y_train`) by tuning at least one parameter to improve upon the untuned model's F-score. 
 
 ### Question 3 - Choosing the Best Model
 
-* Based on the evaluation you performed earlier, in one to two paragraphs, explain to *CharityML* which of the three models you believe to be most appropriate for the task of identifying individuals that make more than `$50,000`.
+* Based on the evaluation you performed earlier, in one to two paragraphs, explain to *CharityML* which of the three models you believe to be most appropriate for the task of identifying individuals that make more than `$50,000`. 
 
-**HINT:**
+**HINT:** 
 Look at the graph at the bottom left from the cell above(the visualization created by `vs.evaluate(results, accuracy, fscore)`) and check the F score for the testing set when 100% of the training set is used. Which model has the highest score? Your answer should include discussion of the:
-* metrics - F score on the testing when 100% of the training data is used,
+* metrics - F score on the testing when 100% of the training data is used, 
 * prediction/training time
 * the algorithm's suitability for the data.
 
@@ -863,16 +863,16 @@ Imagine you are a teacher trying to help a group of students pass an exam. At fi
 AdaBoost is a smart way of combining multiple weak decision trees (simple rules) into a powerful model. It starts with a simple rule, sees where it makes mistakes, and then adjusts by focusing more on the difficult cases. This process continues, with each new rule improving upon the previous ones. When making a prediction, AdaBoost takes a vote from all the rules it has learned, giving more importance to the ones that performed well. This method ensures that difficult cases are not ignored and that the final prediction is as accurate as possible. For CharityML, this means we can accurately predict which individuals are likely to donate, helping the organization focus on the right people.
 
 
-**Answer:**
+**Answer:** 
 
 ### Implementation: Model Tuning
 Fine tune the chosen model. Use grid search (`GridSearchCV`) with at least one important parameter tuned with at least 3 different values. You will need to use the entire training set for this. In the code cell below, you will need to implement the following:
 - Import [`sklearn.grid_search.GridSearchCV`](http://scikit-learn.org/0.17/modules/generated/sklearn.grid_search.GridSearchCV.html) and [`sklearn.metrics.make_scorer`](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html).
 - Initialize the classifier you've chosen and store it in `clf`.
-- Set a `random_state` if one is available to the same state you set before.
+ - Set a `random_state` if one is available to the same state you set before.
 - Create a dictionary of parameters you wish to tune for the chosen model.
-- Example: `parameters = {'parameter' : [list of values]}`.
-- **Note:** Avoid tuning the `max_features` parameter of your learner if that parameter is available!
+ - Example: `parameters = {'parameter' : [list of values]}`.
+ - **Note:** Avoid tuning the `max_features` parameter of your learner if that parameter is available!
 - Use `make_scorer` to create an `fbeta_score` scoring object (with $\beta = 0.5$).
 - Perform grid search on the classifier `clf` using the `scorer`, and store it in `grid_obj`.
 - Fit the grid search object to the training data (`X_train`, `y_train`), and store it in `grid_fit`.
@@ -937,9 +937,9 @@ print("Final F-score on the testing data: {:.4f}".format(fbeta_score(y_test, bes
 
 ### Question 5 - Final Model Evaluation
 
-* What is your optimized model's accuracy and F-score on the testing data?
-* Are these scores better or worse than the unoptimized model?
-* How do the results from your optimized model compare to the naive predictor benchmarks you found earlier in **Question 1**?
+* What is your optimized model's accuracy and F-score on the testing data? 
+* Are these scores better or worse than the unoptimized model? 
+* How do the results from your optimized model compare to the naive predictor benchmarks you found earlier in **Question 1**?  
 
 **Note:** Fill in the table below with your results, and then provide discussion in the **Answer** box.
 
@@ -967,8 +967,8 @@ print("Final F-score on the testing data: {:.4f}".format(fbeta_score(y_test, bes
 
 2. **Comparison with Naïve Predictor**
    The naïve predictor from **Question 1** had much lower accuracy and F-score, as it simply predicted the majority class.
-    - The **optimized AdaBoost model** clearly **outperforms** the naïve predictor by correctly distinguishing between high-income and low-income individuals.
-    - The **F-score improvement** suggests that the model balances **precision and recall** more effectively, reducing both false positives and false negatives.
+   - The **optimized AdaBoost model** clearly **outperforms** the naïve predictor by correctly distinguishing between high-income and low-income individuals.
+   - The **F-score improvement** suggests that the model balances **precision and recall** more effectively, reducing both false positives and false negatives.
 
 3. **Conclusion**
    By fine-tuning **AdaBoost**, we successfully built a **more reliable, efficient, and accurate** model for identifying potential donors for **CharityML**. The final model is well-suited for real-world applications, where correctly predicting high-income individuals is crucial.
@@ -991,25 +991,25 @@ When exploring the dataset, we identified **thirteen features** that describe ea
 
 ### **Top 5 Most Important Features (Ranked)**
 1. **Education Level**
-    - Higher education levels are strongly correlated with higher-paying jobs.
-    - Advanced degrees (e.g., Master's, PhD) typically lead to higher salaries.
-    - Employers often require certain education qualifications for high-income positions.
+   - Higher education levels are strongly correlated with higher-paying jobs.
+   - Advanced degrees (e.g., Master's, PhD) typically lead to higher salaries.
+   - Employers often require certain education qualifications for high-income positions.
 
 2. **Occupation**
-    - Certain occupations have higher average salaries than others.
-    - Jobs in **management, STEM fields, and professional roles** tend to have **higher income levels** compared to labor-intensive or entry-level jobs.
+   - Certain occupations have higher average salaries than others.
+   - Jobs in **management, STEM fields, and professional roles** tend to have **higher income levels** compared to labor-intensive or entry-level jobs.
 
 3. **Hours Worked per Week**
-    - Individuals working full-time or overtime generally have higher earnings.
-    - Part-time workers or those with fewer hours may not reach the $50,000 income threshold.
+   - Individuals working full-time or overtime generally have higher earnings.
+   - Part-time workers or those with fewer hours may not reach the $50,000 income threshold.
 
 4. **Capital Gain**
-    - Large capital gains indicate significant investments or wealth, which often correlates with high income.
-    - Individuals with capital gains typically have **additional sources of income** beyond salaries.
+   - Large capital gains indicate significant investments or wealth, which often correlates with high income.
+   - Individuals with capital gains typically have **additional sources of income** beyond salaries.
 
 5. **Marital Status**
-    - Studies show that **married individuals** (especially those with two-income households) are more likely to earn higher incomes.
-    - Certain marital statuses may indicate greater financial stability and economic advantages.
+   - Studies show that **married individuals** (especially those with two-income households) are more likely to earn higher incomes.
+   - Certain marital statuses may indicate greater financial stability and economic advantages.
 
 ### **Why These Features Matter?**
 - These features directly influence an individual's **earning potential** based on **education, job role, work hours, investments, and household stability**.
@@ -1023,9 +1023,9 @@ When exploring the dataset, we identified **thirteen features** that describe ea
 Choose a `scikit-learn` supervised learning algorithm that has a `feature_importance_` attribute availble for it. This attribute is a function that ranks the importance of each feature when making predictions based on the chosen algorithm.
 
 In the code cell below, you will need to implement the following:
-- Import a supervised learning model from sklearn if it is different from the three used earlier.
-- Train the supervised model on the entire training set.
-- Extract the feature importances using `.feature_importances_`.
+ - Import a supervised learning model from sklearn if it is different from the three used earlier.
+ - Train the supervised model on the entire training set.
+ - Extract the feature importances using `.feature_importances_`.
 
 
 ```python
@@ -1045,16 +1045,16 @@ vs.feature_plot(importances, X_train, y_train)
 ```
 
 
-
+    
 ![png](finding_donors_files/finding_donors_51_0.png)
-
+    
 
 
 ### Question 7 - Extracting Feature Importance
 
-Observe the visualization created above which displays the five most relevant features for predicting if an individual makes at most or above `$50,000`.
+Observe the visualization created above which displays the five most relevant features for predicting if an individual makes at most or above `$50,000`.  
 * How do these five features compare to the five features you discussed in **Question 6**?
-* If you were close to the same answer, how does this visualization confirm your thoughts?
+* If you were close to the same answer, how does this visualization confirm your thoughts? 
 * If you were not close, why do you think these features are more relevant?
 
 **Answer:**
@@ -1089,7 +1089,7 @@ Although my initial feature selection was close, the **visualization helped reve
 
 
 ### Feature Selection
-How does a model perform if we only use a subset of all the available features in the data? With less features required to train, the expectation is that training and prediction time is much lower — at the cost of performance metrics. From the visualization above, we see that the top five most important features contribute more than half of the importance of **all** features present in the data. This hints that we can attempt to *reduce the feature space* and simplify the information required for the model to learn. The code cell below will use the same optimized model you found earlier, and train it on the same training set *with only the top five important features*.
+How does a model perform if we only use a subset of all the available features in the data? With less features required to train, the expectation is that training and prediction time is much lower — at the cost of performance metrics. From the visualization above, we see that the top five most important features contribute more than half of the importance of **all** features present in the data. This hints that we can attempt to *reduce the feature space* and simplify the information required for the model to learn. The code cell below will use the same optimized model you found earlier, and train it on the same training set *with only the top five important features*. 
 
 
 ```python
